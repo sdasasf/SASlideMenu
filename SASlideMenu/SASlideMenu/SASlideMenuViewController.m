@@ -39,6 +39,14 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.currentContentIndexPath) {
+        [self.tableView selectRowAtIndexPath:self.currentContentIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+}
+
 - (void)loadContentAtIndexPath:(NSIndexPath*)indexPath {
     if ([self.slideMenuDataSource respondsToSelector:@selector(segueIdForIndexPath:)]) {
         self.currentContentIndexPath = indexPath;
